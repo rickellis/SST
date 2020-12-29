@@ -1,4 +1,5 @@
-# SST
+# SST - Svelte, Snowpack, and Tailwind.
+
 Svelte using Snowpack and Tailwind
 
 This document describes how to set up a Svelte installation that uses Snowpack instead of a traditional bundler, along with Tailwind CSS.
