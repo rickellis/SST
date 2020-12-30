@@ -4,39 +4,49 @@ Svelte using Snowpack and Tailwind
 
 This document describes how to set up a Svelte installation that uses Snowpack instead of a traditional bundler, along with Tailwind CSS.
 
-[Svelte](https://svelte.dev) is an alternative to Javascript frameworkds like React or Vue, one that uses a completely different paradigm: Compilation. Instead of your browser doing all the work required to run a framework, it buids your code as plain vainilla Javascript using a compiler. No more virtual DOMs or bloated tooling. The compile builds only what you need for your app in native JS. This results in drastically, measurably faster code. Plus, with Svelte you write drastically less code than what you'd use with a typical framework. Plus, the paradigm with Svelte is reversed: Whereas with othe frameworkds, you write Javascirpt files that contain HTML, in Svelte you write HTML files that contain Javascirpt. 
 
-[Snowpack](https://www.snowpack.dev) is a lightning-fast frontend build tool that leverages JavaScript's native module system (known as ESM). Bundlers such as Webpack or Rollup were needed to solve a critical problem for web developers: No native browser support for module imports. That's no longer an issue. Snowpack is a modern approach to bundling that is much faster and efficient for development. 
-
-[Tailwind](https://tailwindcss.com) is a CSS framework that lets you mostly never have to touch a CSS file.  Adam Wathan, the creator of Tailwind, has a [great article](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/) that describes the how and why of Tailwind.
+### Install Snowpack
 
 
 ```js
     npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
 
     cd PROJECT-NAME
-    npm run start
 
+    // Run Snowpack to make sure it's working
+    npm run start
+```
+
+### Install Svelte and Tailwind
+
+```js
     npm install svelte --save
 
     npm install tailwindcss@latest postcss@latest autoprefixer@latest
     npx tailwindcss init
 
+    // These are Snowpack plugins for Svelte and Tailwind
     npm install @snowpack/plugin-svelte --save-dev
     npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
+```
 
+### Update the Snowpack config file
 
+Add these items to `snowpack.config.js`
+
+```js
     // Add the plugin to your snowpack.config.js file
-
     '@snowpack/plugin-svelte',
     '@snowpack/plugin-postcss'
 
-    // In the same file, add this to mount
+    // Add this to mount:
 
     public: '/',
     src: '/dist',
 
-  // And add the experimental bundling:
+  // To build using ESBuild, add the experiemental feature
+  // https://esbuild.github.io
+
     "experiments": {
       "optimize": {
         "bundle": true,
@@ -54,7 +64,7 @@ src
     App.svelete
     index.js
 public
-    index.css
+    styles.css
     index.html
 ```
 
@@ -62,7 +72,6 @@ Here's the contents of `index.js`
 
 ```js
 // index.js
-
 import App from "./App.svelte";
 
 let app = new App({
@@ -84,7 +93,6 @@ if (import.meta.hot) {
 Here's the contents of `App.svelte`
 
 ```js
-
 <!-- App.svelte -->
 <script>
  
@@ -105,7 +113,7 @@ Here's the contents of `index.html`
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./index.css" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
     <title>SITE NAME</title>
   </head>
   <body>
@@ -114,10 +122,9 @@ Here's the contents of `index.html`
 </html>
 ```
 
-Here's the contents of `publid/index.css`
+Here's the contents of `publid/styles.css`
 
 ```css
-/* ./your-css-folder/styles.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
