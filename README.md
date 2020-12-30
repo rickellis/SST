@@ -5,7 +5,7 @@ This document describes how to set [Svelte](https://svelte.dev) with [Snowpack](
 
 ### Install Snowpack
 
-```js
+```shell
 npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
 
 cd PROJECT-NAME
@@ -16,7 +16,7 @@ npm run start
 
 ### Install Svelte and Tailwind
 
-```js
+```shell
 npm install svelte --save
 
 npm install tailwindcss@latest postcss@latest autoprefixer@latest
@@ -32,15 +32,15 @@ npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
 Add these items to `snowpack.config.js`
 
 ```js
-  // Add the plugin to your snowpack.config.js file
-  '@snowpack/plugin-svelte',
-  '@snowpack/plugin-postcss'
+// Add the plugin array
+'@snowpack/plugin-svelte',
+'@snowpack/plugin-postcss'
 
-  // Add this to mount:
-  public: '/',
-  src: '/dist',
+// Add this to mount array:
+public: '/',
+src: '/dist',
 
-// To build using ESBuild, add the experimental feature
+// To build using ESBuild, add the experiments object:
 // https://esbuild.github.io
   "experiments": {
     "optimize": {
@@ -51,13 +51,11 @@ Add these items to `snowpack.config.js`
   }
 ```
 
-
 Create two new folders:
 
 ```html
 src
 public
-
 ```
 
 Move `index.css` and `index.html` into `public`:
@@ -127,14 +125,10 @@ if (import.meta.hot) {
 
 Replace the contents of `src/App.svelte` with:
 
-```js
+```html
 <!-- App.svelte -->
-<script>
- 
-</script>
-<style>
-
-</style>
+<script></script>
+<style></style>
 <div class="px-5 bg-green-300 box">
     <p>Hello world!</p>
 </div>
@@ -144,17 +138,17 @@ Create a file called `postcss.config.js` in the root and add this:
 
 ```js
 module.exports = {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    }
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
   }
+}
 ```
 
 Add this to the purge[] array in `tailwind.config.js`
 
 ```js
-    './src/**/*.html',
-    './src/**/*.js',
-    './src/**/*.svelte',
-  ```
+'./src/**/*.html',
+'./src/**/*.js',
+'./src/**/*.svelte',
+```
