@@ -1,4 +1,4 @@
-# How to insteall Svelte with Snowpack and Tailwind.
+# How to install Svelte with Snowpack and Tailwind.
 
 This document describes how to set [Svelte](https://svelte.dev) with [Snowpack](https://www.snowpack.dev) and [Tailwind CSS](https://tailwindcss.com).
 
