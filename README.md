@@ -135,3 +135,11 @@ module.exports = {
     }
   }
 ```
+
+Add this to the purge[] array in `tailwind.config.js`
+
+```js
+    './src/**/*.html',
+    './src/**/*.js',
+    './src/**/*.svelte',
+  ```
