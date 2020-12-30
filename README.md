@@ -40,13 +40,11 @@ Add these items to `snowpack.config.js`
     '@snowpack/plugin-postcss'
 
     // Add this to mount:
-
     public: '/',
     src: '/dist',
 
   // To build using ESBuild, add the experiemental feature
   // https://esbuild.github.io
-
     "experiments": {
       "optimize": {
         "bundle": true,
@@ -59,7 +57,7 @@ Add these items to `snowpack.config.js`
 
 Create two folders and move/create the files:
 
-```js
+```html
 src
     App.svelete
     index.js
