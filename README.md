@@ -6,25 +6,25 @@ This document describes how to set up a Svelte installation that uses Snowpack i
 ### Install Snowpack
 
 ```js
-    npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
+npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
 
-    cd PROJECT-NAME
+cd PROJECT-NAME
 
-    // Run Snowpack to make sure it's working
-    npm run start
+// Run Snowpack to make sure it's working
+npm run start
 ```
 
 ### Install Svelte and Tailwind
 
 ```js
-    npm install svelte --save
+npm install svelte --save
 
-    npm install tailwindcss@latest postcss@latest autoprefixer@latest
-    npx tailwindcss init
+npm install tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init
 
-    // These are Snowpack plugins for Svelte and Tailwind
-    npm install @snowpack/plugin-svelte --save-dev
-    npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
+// These are Snowpack plugins for Svelte and Tailwind
+npm install @snowpack/plugin-svelte --save-dev
+npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
 ```
 
 ### Update the Snowpack config file
@@ -32,23 +32,23 @@ This document describes how to set up a Svelte installation that uses Snowpack i
 Add these items to `snowpack.config.js`
 
 ```js
-    // Add the plugin to your snowpack.config.js file
-    '@snowpack/plugin-svelte',
-    '@snowpack/plugin-postcss'
+  // Add the plugin to your snowpack.config.js file
+  '@snowpack/plugin-svelte',
+  '@snowpack/plugin-postcss'
 
-    // Add this to mount:
-    public: '/',
-    src: '/dist',
+  // Add this to mount:
+  public: '/',
+  src: '/dist',
 
-  // To build using ESBuild, add the experimental feature
-  // https://esbuild.github.io
-    "experiments": {
-      "optimize": {
-        "bundle": true,
-        "minify": true,
-        "target": 'es2018'
-      }
+// To build using ESBuild, add the experimental feature
+// https://esbuild.github.io
+  "experiments": {
+    "optimize": {
+      "bundle": true,
+      "minify": true,
+      "target": 'es2018'
     }
+  }
 ```
 
 
@@ -139,8 +139,6 @@ Replace the contents of `src/App.svelte` with:
     <p>Hello world!</p>
 </div>
 ```
-
-
 
 Create a file called `postcss.config.js` in the root and add this:
 
