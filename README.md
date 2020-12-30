@@ -18,12 +18,18 @@ This document describes how to set up a Svelte installation that uses Snowpack i
     npm run start
 
     npm install svelte --save
+
+    npm install tailwindcss@latest postcss@latest autoprefixer@latest
+    npx tailwindcss init
+
     npm install @snowpack/plugin-svelte --save-dev
+    npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
 
 
     // Add the plugin to your snowpack.config.js file
 
-    '@snowpack/plugin-svelte'    
+    '@snowpack/plugin-svelte',
+    '@snowpack/plugin-postcss'
 
     // In the same file, add this to mount
 
@@ -108,14 +114,14 @@ Here's the contents of `index.html`
 </html>
 ```
 
+Here's the contents of `publid/index.css`
 
-
-## Install Tailwind
-
-```js
-    npm install tailwindcss@latest postcss@latest autoprefixer@latest
+```css
+/* ./your-css-folder/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
-
 
 Create a file called `postcss.config.js` and add this:
 
@@ -126,30 +132,4 @@ module.exports = {
       autoprefixer: {},
     }
   }
-```
-
-Initialize Tailwind:
-
-```js
-npx tailwindcss init
-```
-
-Add the tailwind css to `public/index.css`
-
-```css
-/* ./your-css-folder/styles.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-Add the postCSS plugin to your install
-
-```js
-    npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
-
-    // In your snowpack.config.js file add this plugin:
-
-     '@snowpack/plugin-postcss'
-
 ```
