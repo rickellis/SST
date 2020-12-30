@@ -29,26 +29,40 @@ npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
 
 ### Update the Snowpack config file
 
-Add these items to `snowpack.config.js`
+Repalce the contents of `snowpack.config.js` with:
 
 ```js
-// Add the plugin array
-'@snowpack/plugin-svelte',
-'@snowpack/plugin-postcss'
-
-// Add this to mount array:
-public: '/',
-src: '/dist',
-
-// To build using ESBuild, add the experiments object:
-// https://esbuild.github.io
-  "experiments": {
-    "optimize": {
-      "bundle": true,
-      "minify": true,
-      "target": 'es2018'
+/** @type {import("snowpack").SnowpackUserConfig } */
+module.exports = {
+  mount: {
+    public: '/',
+    src: '/dist',
+  },
+  plugins: [
+    '@snowpack/plugin-svelte',
+    '@snowpack/plugin-postcss'
+  ],
+  install: [
+  ],
+  installOptions: {
+  },
+  devOptions: {
+  },
+  buildOptions: {
+  },
+  proxy: {
+  },
+  alias: {
+  },
+    // https://esbuild.github.io
+    "experiments": {
+      "optimize": {
+        "bundle": true,
+        "minify": true,
+        "target": 'es2018'
+      }
     }
-  }
+};
 ```
 
 Create two new folders:
