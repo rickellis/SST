@@ -169,3 +169,16 @@ Add this to the `purge[]` array in `tailwind.config.js`
 './src/**/*.js',
 './src/**/*.svelte',
 ```
+
+## Done!
+
+To run your new app, run:
+
+```shell
+npm run start
+```
+To build your app run:
+
+```shell
+npm run build
+```
