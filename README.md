@@ -52,18 +52,58 @@ Add these items to `snowpack.config.js`
 ```
 
 
-Create two folders and move/create the files:
+Create two new folders:
+
+```html
+src
+public
+
+```
+
+Move `index.css` and `index.html` into `public`:
+
+```html
+public
+    index.css
+    index.html
+```
+
+Move `index.js` into `src` and create a new file called `App.svelte` in there as well:
 
 ```html
 src
     App.svelte
     index.js
-public
-    styles.css
-    index.html
 ```
 
-Here's the contents of `index.js`
+
+Replace the contents of `public/index.html` with:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>SITE NAME</title>
+  </head>
+  <body>
+    <script type="module" src="./dist/index.js"></script>
+  </body>
+</html>
+```
+
+Replace the contents of `public/index.css` with:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+
+Replace the contents of `src/index.js` with:
 
 ```js
 // index.js
@@ -85,7 +125,7 @@ if (import.meta.hot) {
   }
 ```
 
-Here's the contents of `App.svelte`
+Replace the contents of `src/App.svelte` with:
 
 ```js
 <!-- App.svelte -->
@@ -100,32 +140,9 @@ Here's the contents of `App.svelte`
 </div>
 ```
 
-Here's the contents of `index.html`
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <title>SITE NAME</title>
-  </head>
-  <body>
-    <script type="module" src="./dist/index.js"></script>
-  </body>
-</html>
-```
 
-Here's the contents of `publid/styles.css`
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-Create a file called `postcss.config.js` and add this:
+Create a file called `postcss.config.js` in the root and add this:
 
 ```js
 module.exports = {
