@@ -97,7 +97,7 @@ Replace the contents of `public/index.html` with:
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./index.css" />
     <title>SITE NAME</title>
   </head>
   <body>
@@ -127,7 +127,7 @@ let app = new App({
 
 export default app;
 
-// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
+// Hot Module Replacement (HMR)
 // Learn more: https://www.snowpack.dev/concepts/hot-module-replacement
 if (import.meta.hot) {
     import.meta.hot.accept();
@@ -140,9 +140,12 @@ if (import.meta.hot) {
 Replace the contents of `src/App.svelte` with:
 
 ```html
-<!-- App.svelte -->
-<script></script>
-<style></style>
+<script>
+
+</script>
+<style>
+
+</style>
 <div class="px-5 bg-green-300 box">
     <p>Hello world!</p>
 </div>
@@ -159,7 +162,7 @@ module.exports = {
 }
 ```
 
-Add this to the purge[] array in `tailwind.config.js`
+Add this to the `purge[]` array in `tailwind.config.js`
 
 ```js
 './src/**/*.html',
