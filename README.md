@@ -1,12 +1,9 @@
 # SST - Svelte, Snowpack, and Tailwind.
 
-Svelte using Snowpack and Tailwind
-
-This document describes how to set up a Svelte installation that uses Snowpack instead of a traditional bundler, along with Tailwind CSS.
+This document describes how to set up a Svelte installation that uses Snowpack instead of a traditional bundler. It also uses Tailwind CSS.
 
 
 ### Install Snowpack
-
 
 ```js
     npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
@@ -43,7 +40,7 @@ Add these items to `snowpack.config.js`
     public: '/',
     src: '/dist',
 
-  // To build using ESBuild, add the experiemental feature
+  // To build using ESBuild, add the experimental feature
   // https://esbuild.github.io
     "experiments": {
       "optimize": {
@@ -59,7 +56,7 @@ Create two folders and move/create the files:
 
 ```html
 src
-    App.svelete
+    App.svelte
     index.js
 public
     styles.css
