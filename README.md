@@ -6,9 +6,9 @@ This document describes how to set up [Svelte](https://svelte.dev) with [Snowpac
 ### Install Snowpack
 
 ```shell
-npx create-snowpack-app PROJECT-NAME --template @snowpack/app-template-minimal
+npx create-snowpack-app YOUR-PROJECT-NAME --template @snowpack/app-template-minimal
 
-cd PROJECT-NAME
+cd YOUR-PROJECT-NAME
 
 // Run Snowpack to make sure it's working
 npm run start
