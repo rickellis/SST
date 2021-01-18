@@ -1,6 +1,6 @@
 # How to install Svelte with Snowpack and Tailwind.
 
-This document describes how to set up [Svelte](https://svelte.dev) with [Snowpack](https://www.snowpack.dev) and [Tailwind CSS](https://tailwindcss.com).
+This document describes how to set up [Svelte](https://svelte.dev) with [Snowpack](https://www.snowpack.dev) 3.0 and [Tailwind CSS](https://tailwindcss.com), bundled with [ESBuild](https://esbuild.github.io). 
 
 
 ### Install Snowpack
@@ -20,6 +20,7 @@ npm run start
 npm install svelte --save
 
 npm install tailwindcss@latest postcss@latest autoprefixer@latest
+npm install @tailwindcss/typography
 npx tailwindcss init
 
 // These are Snowpack plugins for Svelte and Tailwind
@@ -42,28 +43,23 @@ module.exports = {
     '@snowpack/plugin-svelte',
     '@snowpack/plugin-postcss'
   ],
-  install: [
+  routes: [
   ],
-  installOptions: {
+  optimize: {
+    "bundle": true,
+    "minify": true,
+    "target": 'es2018'
+  },
+  packageOptions: {
   },
   devOptions: {
   },
   buildOptions: {
   },
-  proxy: {
-  },
-  alias: {
-  },
-    // https://esbuild.github.io
-    "experiments": {
-      "optimize": {
-        "bundle": true,
-        "minify": true,
-        "target": 'es2018'
-      }
-    }
 };
 ```
+
+### Set up the Svelte files
 
 Create two new folders:
 
