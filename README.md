@@ -1,7 +1,6 @@
 # How to install Svelte with Snowpack and Tailwind.
 
-This document describes how to set up [Svelte](https://svelte.dev) with [Snowpack](https://www.snowpack.dev) 3.0 and [Tailwind CSS](https://tailwindcss.com), bundled with [ESBuild](https://esbuild.github.io). 
-
+This document describes how to set up [Svelte](https://svelte.dev) with [Snowpack](https://www.snowpack.dev) 3.0 and [Tailwind CSS](https://tailwindcss.com), bundled with [ESBuild](https://esbuild.github.io).
 
 ### Install Snowpack
 
@@ -17,15 +16,15 @@ npm run start
 ### Install Svelte and Tailwind
 
 ```shell
-npm install svelte --save
+npm install -D svelte --save
 
-npm install tailwindcss@latest postcss@latest autoprefixer@latest
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 npm install @tailwindcss/typography
 npx tailwindcss init
 
 // These are Snowpack plugins for Svelte and Tailwind
-npm install @snowpack/plugin-svelte --save-dev
-npm install --save-dev @snowpack/plugin-postcss postcss postcss-cli
+npm install -D @snowpack/plugin-svelte
+npm install -D @snowpack/plugin-postcss postcss postcss-cli
 ```
 
 ### Update the Snowpack config file
@@ -36,26 +35,19 @@ Repalce the contents of `snowpack.config.js` with:
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    public: '/',
-    src: '/dist',
+    public: "/",
+    src: "/dist",
   },
-  plugins: [
-    '@snowpack/plugin-svelte',
-    '@snowpack/plugin-postcss'
-  ],
-  routes: [
-  ],
+  plugins: ["@snowpack/plugin-svelte", "@snowpack/plugin-postcss"],
+  routes: [],
   optimize: {
-    "bundle": true,
-    "minify": true,
-    "target": 'es2018'
+    bundle: true,
+    minify: true,
+    target: "es2018",
   },
-  packageOptions: {
-  },
-  devOptions: {
-  },
-  buildOptions: {
-  },
+  packageOptions: {},
+  devOptions: {},
+  buildOptions: {},
 };
 ```
 
@@ -72,18 +64,17 @@ Move `index.css` and `index.html` into `public`:
 
 ```html
 public
-    index.css
-    index.html
+  index.css 
+  index.html
 ```
 
 Move `index.js` into `src` and create a new file called `App.svelte` in there as well:
 
 ```html
 src
-    App.svelte
-    index.js
+  App.svelte 
+  index.js
 ```
-
 
 Replace the contents of `public/index.html` with:
 
@@ -110,7 +101,6 @@ Replace the contents of `public/index.css` with:
 @tailwind utilities;
 ```
 
-
 Replace the contents of `src/index.js` with:
 
 ```js
@@ -126,11 +116,11 @@ export default app;
 // Hot Module Replacement (HMR)
 // Learn more: https://www.snowpack.dev/concepts/hot-module-replacement
 if (import.meta.hot) {
-    import.meta.hot.accept();
-    import.meta.hot.dispose(() => {
-      app.$destroy();
-    });
-  }
+  import.meta.hot.accept();
+  import.meta.hot.dispose(() => {
+    app.$destroy();
+  });
+}
 ```
 
 Replace the contents of `src/App.svelte` with:
@@ -140,10 +130,10 @@ Replace the contents of `src/App.svelte` with:
 
 </script>
 <style>
-
+  
 </style>
 <div class="px-5 bg-green-300 box">
-    <p>Hello world!</p>
+  <p>Hello world!</p>
 </div>
 ```
 
@@ -154,8 +144,8 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-  }
-}
+  },
+};
 ```
 
 Add this to the `purge[]` array in `tailwind.config.js`
@@ -173,6 +163,7 @@ To run your new app, run:
 ```shell
 npm run start
 ```
+
 To build your app run:
 
 ```shell
