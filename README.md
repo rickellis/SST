@@ -19,7 +19,12 @@ npm run start
 npm install -D svelte --save
 
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+// If you intend to use the Typography featuers of Tailwind
+// install this
 npm install @tailwindcss/typography
+
+// Create the tailwind config file
 npx tailwindcss init
 
 // These are Snowpack plugins for Svelte and Tailwind
@@ -155,6 +160,14 @@ Add this to the `purge[]` array in `tailwind.config.js`
 './src/**/*.js',
 './src/**/*.svelte',
 ```
+
+If you intend on using the Typography features of Tailwind, add the plugin to your `tailwind.config.js` file:
+
+```js
+  plugins: [
+    require("@tailwindcss/typography")
+  ],
+  ```
 
 ## Done!
 
